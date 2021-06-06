@@ -65,7 +65,7 @@ customEnv: {}
   # CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS: "localhost:9092"
 
 persistence:
-  enabled: true
+  enabled: false
 
   ## The size of the PersistentVolume to allocate to each Kafka Pod in the StatefulSet. For
   ## production servers this number should likely be much larger.
@@ -148,7 +148,7 @@ cp-zookeeper:
   enabled: true
   servers: 3
   persistence:
-    enabled: true
+    enabled: false
     dataDirSize: 5Gi
     dataLogDirSize: 5Gi
 
