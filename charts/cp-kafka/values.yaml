@@ -65,11 +65,11 @@ customEnv: {}
   # CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS: "localhost:9092"
 
 persistence:
-  enabled: false
+  enabled: true
 
   ## The size of the PersistentVolume to allocate to each Kafka Pod in the StatefulSet. For
   ## production servers this number should likely be much larger.
-  size: 1Gi
+  size: 50Gi
 
   ## Kafka data Persistent Volume Storage Class
   ## If defined, storageClassName: <storageClass>
@@ -106,7 +106,10 @@ nodeSelector: {}
 
 ## Taints to tolerate on node assignment:
 ## Ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
-tolerations: []
+tolerations:
+- key: "node-role.kubernetes.io/master"
+  operator: "Exists"
+  effect: "NoSchedule"
 
 ## Pod scheduling constraints
 ## Ref: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
@@ -149,8 +152,8 @@ cp-zookeeper:
   servers: 3
   persistence:
     enabled: false
-    dataDirSize: 5Gi
-    dataLogDirSize: 5Gi
+    dataDirSize: 50Gi
+    dataLogDirSize: 50Gi
 
   ## If the Zookeeper Chart is disabled a URL and port are required to connect
   url: ""

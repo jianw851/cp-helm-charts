@@ -12,12 +12,12 @@ cp-zookeeper:
   #  - name: "regcred"
   heapOptions: "-Xms512M -Xmx512M"
   persistence:
-    enabled: false
+    enabled: true
     ## The size of the PersistentVolume to allocate to each Zookeeper Pod in the StatefulSet. For
     ## production servers this number should likely be much larger.
     ##
     ## Size for Data dir, where ZooKeeper will store the in-memory database snapshots.
-    dataDirSize: 10Gi
+    dataDirSize: 100Gi
     # dataDirStorageClass: ""
     ## Size for data log dir, which is a dedicated log device to be used, and helps avoid competition between logging and snaphots.
     dataLogDirSize: 10Gi
@@ -53,7 +53,7 @@ cp-kafka:
   persistence:
     enabled: false
     # storageClass: ""
-    size: 5Gi
+    size: 50Gi
     disksPerBroker: 1
   resources: {}
   ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
