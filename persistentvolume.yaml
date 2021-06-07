@@ -5,11 +5,10 @@ metadata:
   labels:
     type: local
 spec:
-  storageClassName: zookeeper-log
-  capacity:
-    storage: 6Gi
   accessModes:
     - ReadWriteMany
+  capacity:
+    storage: 6Gi
   hostPath:
     path: "/mnt/zookeeper/log"
 ---
@@ -20,10 +19,23 @@ metadata:
   labels:
     type: local
 spec:
-  storageClassName: zookeeper-data
-  capacity:
-    storage: 9Gi
   accessModes:
     - ReadWriteMany
+  capacity:
+    storage: 9Gi
   hostPath:
     path: "/mnt/zookeeper/data"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: cp-kafka-data-pv
+  labels:
+    type: local
+spec:
+  accessModes:
+    - ReadWriteMany
+  capacity:
+    storage: 100Gi
+  hostPath:
+    path: "/mnt/kafka"
