@@ -1,0 +1,13 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: zookeeper-data
+reclaimPolicy: Retain
+provisioner: kubernetes.io/no-provisioner
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: zookeeper-log
+reclaimPolicy: Retain
+provisioner: kubernetes.io/no-provisioner

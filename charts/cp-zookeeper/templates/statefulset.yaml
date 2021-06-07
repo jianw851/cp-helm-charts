@@ -175,10 +175,10 @@ spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:
         requests:
-          storage: "{{ .Values.persistence.dataDirSize }}"
+          storage: 2Gi
       {{- if .Values.persistence.dataDirStorageClass }}
       {{- if (eq "-" .Values.persistence.dataDirStorageClass) }}
-      storageClassName: ""
+      storageClassName: "zookeeper-data"
       {{- else }}
       storageClassName: "{{ .Values.persistence.dataDirStorageClass }}"
       {{- end }}
@@ -189,10 +189,10 @@ spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:
         requests:
-          storage: "{{ .Values.persistence.dataLogDirSize }}"
+          storage: 1Gi
       {{- if .Values.persistence.dataLogDirStorageClass }}
       {{- if (eq "-" .Values.persistence.dataLogDirStorageClass) }}
-      storageClassName: ""
+      storageClassName: "zookeeper-log"
       {{- else }}
       storageClassName: "{{ .Values.persistence.dataLogDirStorageClass }}"
       {{- end }}
