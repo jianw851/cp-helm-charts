@@ -70,12 +70,12 @@ persistence:
   ## production servers this number should likely be much larger.
   ##
   ## Size for Data dir, where ZooKeeper will store the in-memory database snapshots.
-  dataDirSize: 10Gi
-  # dataDirStorageClass: ""
+  dataDirSize: 2Gi
+  dataDirStorageClass: local-zookeeper-data
 
   ## Size for data log dir, which is a dedicated log device to be used, and helps avoid competition between logging and snaphots.
-  dataLogDirSize: 10Gi
-  # dataLogDirStorageClass: ""
+  dataLogDirSize: 1Gi
+  dataLogDirStorageClass: local-zookeeper-log
 
 
 ## Pod Compute Resources

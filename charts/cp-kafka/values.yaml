@@ -151,8 +151,8 @@ cp-zookeeper:
   enabled: true
   servers: 3
   persistence:
-    enabled: false
-    dataDirSize: 10Gi
+    enabled: true
+    dataDirSize: 20Gi
     dataLogDirSize: 10Gi
 
   ## If the Zookeeper Chart is disabled a URL and port are required to connect

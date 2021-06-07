@@ -172,13 +172,13 @@ spec:
   - metadata:
       name: datadir
     spec:
-      accessModes: [ "ReadWriteOnce" ]
+      accessModes: [ "ReadWriteMany" ]
       resources:
         requests:
-          storage: 2Gi
+          storage: "{{ .Values.persistence.dataDirSize }}"
       {{- if .Values.persistence.dataDirStorageClass }}
       {{- if (eq "-" .Values.persistence.dataDirStorageClass) }}
-      storageClassName: ""
+      storageClassName: "local-zookeeper-data"
       {{- else }}
       storageClassName: "{{ .Values.persistence.dataDirStorageClass }}"
       {{- end }}
@@ -186,13 +186,13 @@ spec:
   - metadata:
       name: datalogdir
     spec:
-      accessModes: [ "ReadWriteOnce" ]
+      accessModes: [ "ReadWriteMany" ]
       resources:
         requests:
-          storage: 1Gi
+          storage: "{{ .Values.persistence.dataLogDirSize }}"
       {{- if .Values.persistence.dataLogDirStorageClass }}
       {{- if (eq "-" .Values.persistence.dataLogDirStorageClass) }}
-      storageClassName: ""
+      storageClassName: "local-zookeeper-log"
       {{- else }}
       storageClassName: "{{ .Values.persistence.dataLogDirStorageClass }}"
       {{- end }}

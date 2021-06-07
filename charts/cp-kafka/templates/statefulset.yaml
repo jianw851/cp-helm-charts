@@ -193,13 +193,13 @@ spec:
   - metadata:
       name: datadir-{{$k}}
     spec:
-      accessModes: [ "ReadWriteOnce" ]
+      accessModes: [ "ReadWriteMany" ]
       resources:
         requests:
           storage: "{{ $root.Values.persistence.size }}"
       {{- if $root.Values.persistence.storageClass }}
       {{- if (eq "-" $root.Values.persistence.storageClass) }}
-      storageClassName: ""
+      storageClassName: "local-kafka-data"
       {{- else }}
       storageClassName: "{{ $root.Values.persistence.storageClass }}"
       {{- end }}
